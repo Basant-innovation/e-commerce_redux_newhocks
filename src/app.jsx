@@ -69,6 +69,7 @@ class App extends Component {
             )}
           ></Route>
           <Route path="/about" render={() => <h1>About Page</h1>}></Route>
+          <Route path="/add" render={() => <Add />}></Route>
           <Redirect from="/" to="/list"></Redirect>
         </Switch>
         {/*<Add/>*/}

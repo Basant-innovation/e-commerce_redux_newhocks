@@ -159,9 +159,9 @@ class Header extends Component {
                         </NavLink>
                       </li>
                       <li className="list__item">
-                        <a className="nav__inner-link" href="#">
+                        <NavLink className="nav__inner-link" to="/add">
                           Add Product
-                        </a>
+                        </NavLink>
                       </li>
                     </ul>
                   </div>
