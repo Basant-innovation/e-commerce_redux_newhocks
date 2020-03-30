@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import Product from "./product";
 import { Fragment } from "react";
+import { connect } from "react-redux";
 
 // import './product.scss';
+import { fetch_products } from "./../action/productActions";
 
-class Store extends Component {
-  state = {
-    products: []
-  };
+class Productlist extends Component {
+  componentDidMount() {
+    this.props.fetch_products();
+    console.log("this.props.products");
+  }
 
   toggleCartHandler = Product => {
     const products = [...this.state.products];
@@ -32,4 +35,7 @@ class Store extends Component {
   }
 }
 
-export default Store;
+function mapStateToProps(state) {
+  return { products: state.products.items };
+}
+export default connect(mapStateToProps, { fetch_products })(Productlist);

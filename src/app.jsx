@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import Store from "./components/store";
 import Header from "./components/header";
 
 import Add from "./components/add";
 import Container from "./components/container";
 import axios from "axios";
+import { Provider } from "react-redux";
+import store from "./store";
 
 // import './components/product.scss';
 import "./style.css";
