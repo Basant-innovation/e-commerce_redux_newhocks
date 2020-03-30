@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 
 import Store from "./store";
+import Product from "./product";
 
 class Container extends Component {
   state = {
     currentPage: 1,
     perPage: 6,
     currentFilter: 0,
-    search: ""
+    search: "",
+    sort: "asc"
   };
 
   updateSearch(event) {
@@ -17,10 +19,13 @@ class Container extends Component {
   render() {
     let products = [...this.props.products];
 
-    let searchedItems = this.props.products.filter(p => {
-      return p.item.indexOf(this.state.search) !== -1;
-    });
-
+    if (this.state.search !== "") {
+      products = this.props.products.filter(p => {
+        return (
+          p.item.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+        );
+      });
+    }
     if (this.state.currentFilter !== 0) {
       products = products.filter(p => p.filterId === this.state.currentFilter);
     }
@@ -82,15 +87,6 @@ class Container extends Component {
                 <span className="tag">Sport</span>
                 <span className="tag">Tv</span>
                 <span className="tag">Books</span>
-                {/* <span className="tag">Tech</span>
-                <span className="tag">Addidas</span>
-                <span className="tag">Promo</span>
-                <span className="tag">Reading</span>
-                <span className="tag">Social</span>
-                <span className="tag">New</span>
-                <span className="tag">Special</span>
-                <span className="tag">Food</span>
-                <span className="tag">Used</span> */}
               </div>
             </div>
             {/* related items */}
